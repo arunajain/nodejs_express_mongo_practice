@@ -18,6 +18,14 @@ const taskSchema = new mongoose.Schema({
   due_date: {
     type: Date,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const Task = mongoose.model("Task", taskSchema);
