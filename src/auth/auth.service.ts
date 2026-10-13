@@ -54,15 +54,18 @@ export class AuthService {
       role: "user",
     };
 
-    await pendingRegistrationService.setPendingRegistration(email, pendingUser);
+    await pendingRegistrationService.setPendingRegistration(
+      pendingUser.email,
+      pendingUser,
+    );
 
     await pendingRegistrationService.setExpiryPendingRegistration(
-      email,
+      pendingUser.email,
       config.email.verificationEmailExpiresInMinutes * 60,
     );
 
     EmailService.sendVerificationEmail(
-      email,
+      pendingUser.email,
       _firstName,
       otp,
       config.email.verificationEmailExpiresInMinutes,
